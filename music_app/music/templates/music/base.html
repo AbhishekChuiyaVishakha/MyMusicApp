@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/music_player.js' %}?v={{ timestamp }}"></script>
+
 </head>
 <body>
     <nav>
@@ -23,16 +27,23 @@
     <div class="container">
         {% block content %}{% endblock %}
     </div>
-
     <!-- Music Player -->
-    <div id="music-player" style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: white; padding: 10px; text-align: center; display: none;">
-        <button id="prevBtn">⏮️</button>
-        <button id="playPauseBtn">▶️</button>
-        <button id="nextBtn">⏭️</button>
-        <span id="current-song">No song playing</span>
-        <audio id="audio-player" controls style="display: none;"></audio>
+<div id="music-player" style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: white; padding: 10px; text-align: center; display: none;">
+    <button id="prevBtn">⏮️</button>
+    <button id="playPauseBtn">▶️</button>
+    <button id="nextBtn">⏭️</button>
+    <span id="current-song">No song playing</span>
+
+    <!-- Seekbar -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="current-time">0:00</span>
+        <input type="range" id="seekbar" min="0" value="0" step="1" style="width: 300px;">
+        <span id="total-duration">0:00</span>
     </div>
 
-    <script src="{% static 'js/music_player.js' %}"></script>
+    <audio id="audio-player" controls style="display: none;"></audio>
+</div>
+
+
 </body>
 </html>
