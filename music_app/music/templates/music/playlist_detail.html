@@ -6,12 +6,13 @@
     <h1>{{ playlist.name }}</h1>
     <h2>Songs in Playlist</h2>
     <ul>
+
         {% for song in playlist.songs.all %}
             <li>
-                <a href="#" class="play-song" data-song-url="{{ song.audio_file.url }}" data-song-title="{{ song.title }}">{{ song.title }}</a>
+                <a href="#" class="play-song" data-song-url="{{ song.audio_file.url }}" data-song-title="{{ song.title }}">
+                    🎵 {{ song.title }}
+                </a>
             </li>
-        {% empty %}
-            <li>No songs in this playlist yet.</li>
         {% endfor %}
     </ul>
 
