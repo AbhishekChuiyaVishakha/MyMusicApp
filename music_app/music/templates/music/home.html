@@ -1,0 +1,17 @@
+{% extends 'music/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Music App</h1>
+    <p>Explore music, artists, albums, and playlists!</p>
+    <h2>Artists</h2>
+    <ul>
+        {% for artist in artists %}
+            <li><a href="{% url 'artist_detail' artist.id %}">{{ artist.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+

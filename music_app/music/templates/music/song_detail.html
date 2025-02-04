@@ -1,0 +1,29 @@
+{% extends 'music/base.html' %}
+
+{% block title %}{{ song.title }}{% endblock %}
+
+{% block content %}
+
+
+
+    <h1>{{ song.title }}</h1>
+
+    {% if song.audio_file %}
+        <a href="#" class="play-song" data-song-url="{{ song.audio_file.url }}" data-song-title="{{ song.title }}">{{ song.title }}</a>
+    {% else %}
+    <p>No audio file available.</p>
+{% endif %}
+    <p>Album: <a href="{% url 'album_detail' song.album.id %}">{{ song.album.title }}</a></p>
+    {% if song.album.cover_image %}
+    <img src="{{ song.album.cover_image.url }}" alt="{{ song.album.name }}" width="150">
+    {% endif %}
+    <p>Artist: <a href="{% url 'artist_detail' song.artist.id %}">{{ song.artist.name }}</a></p>
+    {% if song.artist.image %}
+        <img src="{{ song.artist.image.url }}" alt="{{ song.artist.name }}" width="150">
+    {% endif %}
+
+
+
+    <a href="{% url 'home' %}">Back to Home</a>
+
+    {% endblock %}

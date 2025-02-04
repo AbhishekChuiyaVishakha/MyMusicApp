@@ -1,0 +1,19 @@
+
+
+{% extends 'music/base.html' %}
+
+{% block title %}Playlists{% endblock %}
+
+{% block content %}
+
+<h1>My Playlists</h1>
+<a href="{% url 'create_playlist' %}">Create New Playlist</a>
+<ul>
+    {% for playlist in playlists %}
+        <li>
+            <a href="{% url 'playlist_detail' playlist.id %}">{{ playlist.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}
